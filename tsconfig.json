@@ -1,4 +1,9 @@
-{
+
+
+{  
+  "$schema": "https://raw.githubusercontent.com/microsoft/TypeScript/master/lib/protocol.d.ts", 
+
+
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "target": "es5",
