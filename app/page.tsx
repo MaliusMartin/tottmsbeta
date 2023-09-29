@@ -17,7 +17,7 @@ export default function Home() {
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
       {/* <div className="flex flex-col items-center justify-center h-screen bg-gray-100"> */}
       <h1 className="text-4xl text-black font-bold mb-10">TAMISEMI ONLINE TEACHER TRANSFER MANAGEMENT SYSTEM (TOTTMS)</h1>
-      <img src={ngao.src} alt="tottms-ngao" />
+      
       <div className="flex flex-col gap-4">
         <input
           type="text"
@@ -38,9 +38,16 @@ export default function Home() {
         // onClick={handleCheck}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
       >
-        Check
+        CHECK
       </button>
-   
+             
+
+        <div className="btn-group btn-group-vertical lg:btn-group-horizontal">
+        
+        <a href="/login" className="btn" >Login</a>
+        <button className="btn">Reset password</button>
+        
+      </div>
       </div>
       
     </div>
