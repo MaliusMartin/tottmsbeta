@@ -5,6 +5,7 @@ import React, { useState, useCallback, useEffect} from 'react';
 
 import axios from "axios"
 import Navbar from '../components/Navbar'; 
+import { Interface } from 'readline';
 
 
 
@@ -107,13 +108,7 @@ const AddTeacherForm: React.FC = () => {
     const [districts, setDistrict] = useState<District[]>([]);
     const [selectedRegion, setSelectedRegion] = useState<Region | null>(regions[0]);
 
-    // const fetchDistrict = async () => {
-    //     const selectedRegionId = selectedRegion?.id;
-    //     const url = `http://127.0.0.1:8000/tottmsapi/regions/${selectedRegionId}/districts/`;
-    //     const response = await axios.get(url);
-    //     const districts = response.data;
-    //     setDistrict(districts)
-    // };
+  
     const fetchDistrict = useCallback(async () => {
       const selectedRegionId = selectedRegion?.id;
       const url = `http://127.0.0.1:8000/tottmsapi/regions/${selectedRegionId}/districts/`;
@@ -126,7 +121,6 @@ const AddTeacherForm: React.FC = () => {
         fetchDistrict()
     }, [selectedRegion, fetchDistrict]);
    
-    // const filteredDistricts = districts.filter((district) => district.regionId === selectedRegion?.id);
 
 
      interface Education{
@@ -161,6 +155,31 @@ const AddTeacherForm: React.FC = () => {
            useEffect(() => {
             fetchSubject();
         }, []);
+
+
+      interface School{
+        id: number;
+        name: string;
+      }
+      const [schools, setSchools] = useState<School[]>([]);
+      const [selectedDistrict, setSelectedDistrict] = useState<District | null>(districts[0]);
+
+      const fetchSchools = useCallback(async () => {
+        const selectedRegionId = selectedRegion?.id;
+        const selectedDistrictId = selectedDistrict?.id;
+
+        if (selectedRegionId && selectedDistrictId) {
+          const url = `http://localhost:8000/tottmsapi/regions/${selectedRegionId}/districts/${selectedDistrictId}/schools/`;
+          const response = await axios.get(url);
+          const schools = response.data;
+          setSchools(schools);
+        }
+      }, [selectedDistrict, selectedRegion]);
+
+          useEffect(() => {
+            fetchSchools();
+          }, [selectedDistrict, fetchSchools]);
+
 
 
         
@@ -299,14 +318,14 @@ const AddTeacherForm: React.FC = () => {
         
          </div>
         <div className='p-4'>
-        <input
-        className="border border-gray-300  rounded-md p-2"
-        type="text"
-        name="school"
-        placeholder="School"
-        value={teacher.school}
-        onChange={handleChange}
-      />
+      <label>Select School</label>
+          <select title='Schools' name='school' value={teacher.school} onChange={handleChange}>
+            {schools.map((school) => (
+                          <option key={school.id} value={school.name}>
+                              {school.name}
+                          </option>
+                          ))}
+          </select>
         </div>
         <div className='p-4'>
             <label>Education level</label>

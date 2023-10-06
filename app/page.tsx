@@ -1,22 +1,12 @@
-import { StaticImageData } from "next/image";
 
-
-
-const ngao: StaticImageData = {
-  src: "/public/ngao.png",
- 
-  width: 100,
-  height: 100,
-};
-
-
+import Appfrom from "./components/Appform";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-      {/* <div className="flex flex-col items-center justify-center h-screen bg-gray-100"> */}
+     
       <h1 className="text-4xl text-black font-bold mb-10">TAMISEMI ONLINE TEACHER TRANSFER MANAGEMENT SYSTEM (TOTTMS)</h1>
       
       <div className="flex flex-col gap-4">
@@ -49,6 +39,8 @@ export default function Home() {
         <button className="btn">Reset password</button>
         
       </div>
+      < Appfrom form={{}} />
+
       </div>
       
     </div>
