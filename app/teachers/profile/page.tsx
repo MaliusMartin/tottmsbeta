@@ -85,7 +85,7 @@ const TeacherProfile = () => {
   useEffect(() => {
     const fetchTeacher = async () => {
       try {
-        const response = await axios.get<Teacher>(`http://127.0.0.1:8000/tottmsapi/teachers/${id}/`);
+        const response = await axios.get<Teacher>(`http://127.0.0.1:8000/tottmsapi/teachers/1/`);
         setTeacher(response.data);
 
         // Fetch regions

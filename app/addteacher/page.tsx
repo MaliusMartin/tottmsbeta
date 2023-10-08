@@ -195,7 +195,7 @@ const AddTeacherForm: React.FC = () => {
        
     <form onSubmit={handleSubmit(onSubmit)}>
       
-      <div className='flex flex-row lg:flex-row'>
+      <div className='flex flex-col lg:flex-row'>
             <div className='p-4'>
                   <input
                   className="border border-gray-300 rounded-md p-2"
@@ -232,7 +232,7 @@ const AddTeacherForm: React.FC = () => {
           </div>
       </div>
      
-    <div className='flex flex-row lg:flex-row'>
+    <div className='flex flex-col lg:flex-row'>
           <div className='p-4'>
               <input
                 className="border border-gray-300 rounded-md p-2"
@@ -271,7 +271,7 @@ const AddTeacherForm: React.FC = () => {
           </div>
     </div>
      
-     <div className='flex flex-row lg:flex-row'>
+     <div className='flex flex-col lg:flex-row'>
             <div className='p-4'>
                   <label>Starting date</label>
                 <input
@@ -299,7 +299,7 @@ const AddTeacherForm: React.FC = () => {
             </div>
      </div>
     
-     <div className='flex flex-row lg:flex-row'>
+     <div className='flex flex-col lg:flex-row'>
               <div className='p-4'>
                   <label>Select region</label>
                   <select name="region" title="Region" value={teacher.region} onChange={handleChange}>
@@ -335,7 +335,7 @@ const AddTeacherForm: React.FC = () => {
             </div>
       </div>
 
-      <div className='flex flex-row lg:flex-row'>
+      <div className='flex flex-col lg:flex-row'>
               <div className='p-4'>
                   <label>Education level</label>
                   <select name="education_level" title="Education" value={teacher.education_level} onChange={handleChange}>
