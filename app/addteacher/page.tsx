@@ -194,161 +194,171 @@ const AddTeacherForm: React.FC = () => {
     <p className="text-4xl text-black font-bold mb-10">TOTTMS ADD A NEW TEACHER</p>
        
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='p-4'>
-        <input
-        className="border border-gray-300 rounded-md p-2"
-        type="text"
-        placeholder="First name"
-        value={teacher.fname}
-        name='fname'
-        onChange={handleChange}
-        // {...register('fname', { required: true })}
-      />
-        </div>
-        <div className='p-4'>
-        <input
-        className="border border-gray-300 rounded-md p-2"
-        type="text"
-        placeholder="Middle name"
-        value={teacher.mname}
-        name='mname'
-        onChange={handleChange}
-        // {...register('mname', { required: true })}
-      />
-        </div>
-     
-       <div className='p-4'>
-       <input
-        className="border border-gray-300 rounded-md p-2"
-        type="text"
-        placeholder="Surname"
-        value={teacher.sname}
-        name='sname'
-        onChange={handleChange}
-        // {...register('sname', { required: true })}
-      />
-       </div>
-     
-       <div className='p-4'>
-       <input
-        className="border border-gray-300 rounded-md p-2"
-        type="text"
-        placeholder="Position"
-        value={teacher.position}
-        name='position'
-        onChange={handleChange}
-        // {...register('position', { required: true })}
-      />
-       </div>
-     
-    
-      <div className='p-4'>
-      <label>Select gender </label>
-      <select name="gender"
-       value={teacher.gender} 
-       title="Gender"
-        onChange={handleChange}>
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-      </select>
-     
-      </div>
-       
-      <div className='p-4'>
-      <input
-        className="border border-gray-300 rounded-md p-2"
-        type="text"
-        placeholder="Check number"
-        value={teacher.check_number}
-        name='check_number'
-        onChange={handleChange}
-        // {...register('check_number', { required: true })}
-      />
-      </div>
-     
-      <div className='p-4'>
-        <label>Starting date</label>
-      <input
-        className="border border-gray-300 rounded-md p-2"
-        type="date"
-        placeholder="Start date"
-        name='start_date'
-        value={teacher.start_date}
-        onChange={handleChange}
-        // {...register('start_date', { required: true })}
-      />
-      </div>
       
-       <div className='p-4'>
-       <label>Date of Birth</label>
-       <input
-        className="border border-gray-300 rounded-md p-2"
-        type="date"
-        placeholder="Date of birth"
-        name='date_of_birth'
-        value={teacher.date_of_birth}
-        onChange={handleChange}
-        // {...register('date_of_birth', { required: true })}
-      />
-       </div>
+      <div className='flex flex-row lg:flex-row'>
+            <div className='p-4'>
+                  <input
+                  className="border border-gray-300 rounded-md p-2"
+                  type="text"
+                  placeholder="First name"
+                  value={teacher.fname}
+                  name='fname'
+                  onChange={handleChange}
+                  // {...register('fname', { required: true })}
+                />
+            </div>
+            <div className='p-4'>
+                  <input
+                  className="border border-gray-300 rounded-md p-2"
+                  type="text"
+                  placeholder="Middle name"
+                  value={teacher.mname}
+                  name='mname'
+                  onChange={handleChange}
+                  // {...register('mname', { required: true })}
+                />
+            </div>
+        
+          <div className='p-4'>
+              <input
+                className="border border-gray-300 rounded-md p-2"
+                type="text"
+                placeholder="Surname"
+                value={teacher.sname}
+                name='sname'
+                onChange={handleChange}
+                // {...register('sname', { required: true })}
+              />
+          </div>
+      </div>
+     
+    <div className='flex flex-row lg:flex-row'>
+          <div className='p-4'>
+              <input
+                className="border border-gray-300 rounded-md p-2"
+                type="text"
+                placeholder="Position"
+                value={teacher.position}
+                name='position'
+                onChange={handleChange}
+                // {...register('position', { required: true })}
+              />
+          </div>
+     
     
-        <div className='p-4'>
-        <label>Select region</label>
-        <select name="region" title="Region" value={teacher.region} onChange={handleChange}>
-                {regions.map((region) => (
-                    <option key={region.id} value={region.name}>
-                          {region.name}
-                    </option>
-                ))}
-        </select>
-
-
-        </div>
+          <div className='p-4'>
+              <label>Select gender </label>
+              <select name="gender"
+              value={teacher.gender} 
+              title="Gender"
+                onChange={handleChange}>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+        
+          </div>
+       
+          <div className='p-4'>
+                <input
+                  className="border border-gray-300 rounded-md p-2"
+                  type="text"
+                  placeholder="Check number"
+                  value={teacher.check_number}
+                  name='check_number'
+                  onChange={handleChange}
+                  // {...register('check_number', { required: true })}
+                />
+          </div>
+    </div>
+     
+     <div className='flex flex-row lg:flex-row'>
+            <div className='p-4'>
+                  <label>Starting date</label>
+                <input
+                  className="border border-gray-300 rounded-md p-2"
+                  type="date"
+                  placeholder="Start date"
+                  name='start_date'
+                  value={teacher.start_date}
+                  onChange={handleChange}
+                  // {...register('start_date', { required: true })}
+                />
+            </div>
+            
+            <div className='p-4'>
+                <label>Date of Birth</label>
+                <input
+                  className="border border-gray-300 rounded-md p-2"
+                  type="date"
+                  placeholder="Date of birth"
+                  name='date_of_birth'
+                  value={teacher.date_of_birth}
+                  onChange={handleChange}
+                  // {...register('date_of_birth', { required: true })}
+                />
+            </div>
+     </div>
+    
+     <div className='flex flex-row lg:flex-row'>
+              <div className='p-4'>
+                  <label>Select region</label>
+                  <select name="region" title="Region" value={teacher.region} onChange={handleChange}>
+                          {regions.map((region) => (
+                              <option key={region.id} value={region.name}>
+                                    {region.name}
+                              </option>
+                          ))}
+                  </select>
+              </div>
 
         
-        <div className='p-4'>
-        <label>Select district</label>
-                        <select name="district" title="District">
-                    {districts.map((district) => (
-                    <option key={district.id} value={district.name}>
-                        {district.name}
-                    </option>
-                    ))}
-                </select>
-        
-         </div>
-        <div className='p-4'>
-      <label>Select School</label>
-          <select title='Schools' name='school' value={teacher.school} onChange={handleChange}>
-            {schools.map((school) => (
-                          <option key={school.id} value={school.name}>
-                              {school.name}
+              <div className='p-4'>
+                    <label>Select district</label>
+                              <select name="district" title="District">
+                          {districts.map((district) => (
+                          <option key={district.id} value={district.name}>
+                              {district.name}
                           </option>
                           ))}
-          </select>
-        </div>
-        <div className='p-4'>
-            <label>Education level</label>
-            <select name="education_level" title="Education" value={teacher.education_level} onChange={handleChange}>
-                {education.map((education) => (
-                    <option key={education.id} value={education.name}>
-                        {education.name}
-                    </option>
-                    ))}
-            </select>
-        </div>
+                      </select>
+              
+              </div>
+            <div className='p-4'>
+                <label>Select School</label>
+                  <select title='Schools' name='school' value={teacher.school} onChange={handleChange}>
+                    {schools.map((school) => (
+                                  <option key={school.id} value={school.name}>
+                                      {school.name}
+                                  </option>
+                                  ))}
+                  </select>
+            </div>
+      </div>
 
-        <div className='p-4'>
-          <label>Select subjects</label>
-            <select name='subjects_taught' title='Subject' value={teacher.subjects_taught} onChange={handleChange}>
-                {subject.map((subject) => (
-                    <option key={subject.id} value={subject.name}>
-                        {subject.name}
-                    </option>
-                ))}
-            </select>
+      <div className='flex flex-row lg:flex-row'>
+              <div className='p-4'>
+                  <label>Education level</label>
+                  <select name="education_level" title="Education" value={teacher.education_level} onChange={handleChange}>
+                      {education.map((education) => (
+                          <option key={education.id} value={education.name}>
+                              {education.name}
+                          </option>
+                          ))}
+                  </select>
+              </div>
 
-        </div>
+              <div className='p-4'>
+                <label>Select subjects</label>
+                  <select name='subjects_taught' title='Subject' value={teacher.subjects_taught} onChange={handleChange}>
+                      {subject.map((subject) => (
+                          <option key={subject.id} value={subject.name}>
+                              {subject.name}
+                          </option>
+                      ))}
+                  </select>
+
+              </div>
+      </div>
       <div className='p-4'>
             <button 
                         type="submit"

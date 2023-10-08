@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-// import styles  from './navbar.module.css';
-import Appfrom from "./Appform";
 
 
 export default function Navbar() {
@@ -14,11 +12,12 @@ export default function Navbar() {
     <ul className="menu menu-horizontal px-1">
       <li><details>
           <summary> 
-            Downloads
+            Resources
           </summary>
            <ul className="p-2 bg-base-100">
-                <li><a href="{}"> < Appfrom form={{}} /></a></li>
-                <li><a href="#">User manual</a></li>
+               
+                <li><a href='#'>Pre-appform</a></li>
+                <li><a href="#">user manual</a></li>
                 <li><a href="#">Others</a></li>
 
            </ul>
@@ -31,7 +30,7 @@ export default function Navbar() {
           <ul className="p-2 bg-base-100">
             <li><a href="#">Profile</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="/login">Logout</a></li>
           </ul>
         </details>
       </li>

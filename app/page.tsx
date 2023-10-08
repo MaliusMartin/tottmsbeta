@@ -19,7 +19,7 @@ export default function Home() {
         />
         <input
           type="text"
-          placeholder="enter sure name"
+          placeholder="enter sur name"
           // value={sureName}
           // onChange={(e) => setSureName(e.target.value)}
           className="border border-gray-300 rounded-md p-2"
