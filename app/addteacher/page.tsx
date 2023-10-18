@@ -5,7 +5,6 @@ import React, { useState, useCallback, useEffect} from 'react';
 
 import axios from "axios"
 import Navbar from '../components/Navbar'; 
-import { Interface } from 'readline';
 
 
 
@@ -91,8 +90,8 @@ const AddTeacherForm: React.FC = () => {
 
     const fetchRegions = async () => {
     const response = await axios.get("http://127.0.0.1:8000/tottmsapi/regions/");
-    const regions = response.data;
-    setRegions(regions);
+    const regionse = response.data;
+    setRegions(regionse);
     };
 
     useEffect(() => {
@@ -104,7 +103,7 @@ const AddTeacherForm: React.FC = () => {
         name: string;
         regionId: number;
     }
-    // const regions = useSelector((state:any) => state.regions);
+  
     const [districts, setDistrict] = useState<District[]>([]);
     const [selectedRegion, setSelectedRegion] = useState<Region | null>(regions[0]);
 
@@ -186,12 +185,14 @@ const AddTeacherForm: React.FC = () => {
   return (
   
    <div className='font-mono  text-black'>
-    <Navbar  />  
+    <Navbar  /> 
+                 <div className='flex justify-center font-bold items-center"'>
+                         <h1 className='text-4xl mb-10'>Add a new Teacher</h1>
+                    </div> 
     <main className="flex min-h-screen flex-col items-center justify-between font-mono p-24" >
          
     <div className="flex flex-col gap-4">
   
-    <p className="text-4xl text-black font-bold mb-10">TOTTMS ADD A NEW TEACHER</p>
        
     <form onSubmit={handleSubmit(onSubmit)}>
       
@@ -359,10 +360,10 @@ const AddTeacherForm: React.FC = () => {
 
               </div>
       </div>
-      <div className='p-4'>
+      <div className=' flex justify-center  items-center p-4'>
             <button 
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
+                        className="btn btn-outline hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-md mt-4"
                     >Submit
             </button>
       </div>

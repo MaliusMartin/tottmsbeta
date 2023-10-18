@@ -252,7 +252,10 @@ const Teachers = () => {
             <Suspense fallback={<div> 
                          <span className="loading loading-spinner loading-lg"></span>
                         </div>}>
-                <h1 className='text-4xl mb-10'>ALL TEACHERS</h1>
+                    <div className='flex justify-center font-bold items-center"'>
+                         <h1 className='text-4xl mb-10'>All Teachers</h1>
+                    </div>
+              
                 <div className='overflow-x-auto'>
                         <table className='table bg-white  table-xs table-pin-rows table-pin-cols'>
                             <thead>
