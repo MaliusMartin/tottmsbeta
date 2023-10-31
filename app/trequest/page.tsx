@@ -3,6 +3,7 @@
 import Navbar from '../components/Navbar'
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 
 interface Reasons{
@@ -192,17 +193,20 @@ const [request, setRequest] = useState<TransferApplication>({
     </div>
 
     <form onSubmit={handleSubmit}>
+        <div className=' flex justify-center font-bold  items-center'>
+          Provide current working location
+        </div>
 
-        <div className='ustify-center  items-center"'>
+        <div className='justify-center  items-center"'>
         
-
-            <div className='flex pl-72 flex-col lg:flex-row'>
+        <div className='flex justify-center p-5 items-center'>
+            <div className='flex  flex-col lg:flex-row'>
                 <div className="p-4">
-                <label>current region</label>
+            
                 <select
                     className='rounded h-10'
                     name="FromRegionID"
-                    title="Region"
+                    title=" Current Region"
                     value={selectedCurrentRegion}
                     onChange={handleChangeCurrentRegion}
                 >
@@ -216,11 +220,11 @@ const [request, setRequest] = useState<TransferApplication>({
                 </div>
 
                 <div className="p-4">
-                <label>current district</label>
+            
                 <select
                     className='rounded h-10'
                     name="FromDistrictID"
-                    title="District"
+                    title="Current District"
                     value={selectedCurrentDistrict}
                     onChange={(event) => setSelectedCurrentDistrict(event.target.value)}
                 >
@@ -233,14 +237,19 @@ const [request, setRequest] = useState<TransferApplication>({
                 </select>
                 </div>
             </div>
-
-            <div className='flex pl-60 flex-col lg:flex-row'>
+          </div>
+          
+          <div className=' flex justify-center font-bold  items-center'>
+          Provide desired working location
+          </div>
+            <div className='flex justify-center p-5 items-center'>
+            <div className='flex flex-col lg:flex-row'>
                 <div className="p-4">
-                    <label>destination region</label>
+                    
                     <select
                         className='rounded h-10'
                         name="ToRegionID"
-                        title="Region"
+                        title="Destination Region"
                         value={selectedDestinationRegion}
                         onChange={handleChangeDestinationRegion}>
                         <option value="">Select a region</option>
@@ -252,11 +261,11 @@ const [request, setRequest] = useState<TransferApplication>({
                     </select>
                 </div>
                 <div className="p-4">
-                    <label>destination district</label>
+                    
                     <select
                         className='rounded h-10'
                         name="ToDistrictID"
-                        title="District"
+                        title="Destination District"
                         value={selectedDestinationDistrict}
                         onChange={(event) => setSelectedDestinationDistrict(event.target.value)} >
                         <option value="">Select a district</option>
@@ -268,13 +277,16 @@ const [request, setRequest] = useState<TransferApplication>({
                     </select>
                 </div>
             </div>
-
+            </div>
+                <div className=' flex justify-center font-bold  items-center'>
+                Provide reasons for transfer
+               </div>
                 <div className='flex justify-center p-5 items-center'>
                         
-                            <label>Select reasons</label>
                             <select 
                             className='rounded h-10'
                             name="reason" 
+                            placeholder='Select reason'
                             title="Reasons">
                             {reasons.map((reason) => (
                                 <option key={reason.id} value={reason.reason}>
@@ -283,9 +295,12 @@ const [request, setRequest] = useState<TransferApplication>({
                             ))}
                             </select>
                 </div>
+                <div className=' flex justify-center font-bold  items-center'>
+                Attach the full filled form and supporting documents
+               </div>
                 <div className='flex justify-center p-5 items-center'>
                 
-                        <label>Upload form & documents</label>
+                      
                             <input
                             className="file-input file-input-bordered w-full max-w-xs" 
                             name='SupportingDocuments' title='Form + Supporting documents'
@@ -294,21 +309,28 @@ const [request, setRequest] = useState<TransferApplication>({
 
                     
                 </div>
+                <div className=' flex justify-center font-bold  items-center'>
+               Briefly explain reasons for transfer
+               </div>
                 <div className='flex justify-center p-5 items-center'>
                     <input
                             className="textarea textarea-bordered textarea-lg w-full max-w-xs"
                             name='Reasons' title='Provide concrete reasons'
                             type='Textfield'
-                            placeholder='Briefly explain the reason for this transfer request'
+                            placeholder='Briefly explain your reason for this transfer request'
                     
                     />
                 </div>
                 <div className='flex justify-center  items-center'>
                     <button type='submit' className="btn btn-outline">submit</button>
+                   
                 </div>
 
         </div>
     </form>
+    
+    <br/> <br/> <br/> <br/><br/><br/><br/>
+  <Footer/>
 </div>
   );
 };

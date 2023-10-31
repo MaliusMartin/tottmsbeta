@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 import { useParams } from 'next/navigation';
 // import Router from 'next/router';
 import Image from 'next/image';
+import Footer from '../components/Footer';
+import MyImageComponent from '../components/MyImageComponent';
 
 
 interface Region {
@@ -50,6 +52,8 @@ interface Subject {
     id: number;
     name: string;
 }
+
+
 interface Teacher {
   id: number;
   fname: string | null;
@@ -70,6 +74,9 @@ interface Teacher {
   subjects_taught: number | null;
   phone: string | null;
   email: string | null;
+  image: string | null;
+
+  
 }
 
 
@@ -104,7 +111,8 @@ const Teachers = () => {
                 );
                 const teachersData = teachersResponse.data;
                 setTeachers(teachersData);
-
+          
+               
                 // Fetch regions
                 const regionsResponse = await axios.get<Region[]>(
                     'http://127.0.0.1:8000/tottmsapi/regions/'
@@ -307,12 +315,13 @@ const Teachers = () => {
                     <div className="card w-96 items-center bg-white rounded-md"> 
                         <div className="avatar py-6">
                                 <div className="w-50 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <Image
-                                            src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                                            alt="A profile image"
-                                            width={50}  // Set an appropriate width
-                                            height={50} // Set an appropriate height
-                                        />
+                                <Image
+                                    src={teacher?.image ? `http://localhost:8000${teacher.image}` : '/images/stock/photo-1534528741775-53994a69daeb.jpg'}
+                                    alt="A profile image"
+                                    width={50}
+                                    height={50}
+                                />
+                                
                                 </div>
                         </div>
                     </div>
@@ -357,7 +366,7 @@ const Teachers = () => {
                     </div>
                 </div>
             </dialog>
-            
+            <Footer />  
         </div>
     );
 };

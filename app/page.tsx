@@ -1,9 +1,14 @@
 
-import { link } from "fs";
 import Appfrom from "./components/Appform";
 import Link from "next/link";
 
+
+
+
 export default function Home() {
+
+
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       
@@ -29,21 +34,16 @@ export default function Home() {
         <button
         type="button"
         // onClick={handleCheck}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 gap-4"
+        className="btn btn-outline font-bold py-2 px-4 rounded-md mt-4 gap-4"
       >
         CHECK
       </button>
 
-
-          <button
-      type="button"
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 gap-4"
-    >
-      <Link href="/login">
-        LOGIN
-      </Link>
-    </button>   
-
+      <div className=" text-black ">
+          <p className= "py-2 "> Aready have account?  
+          <Link href="/login" className=" text-red-600 font-bold">login</Link>
+          </p>   
+      </div>
        
       < Appfrom form={{}} />
 

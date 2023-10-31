@@ -7,4 +7,7 @@ module.exports = {
     experimental: {
       serverActions: true,
     },
+    images: {
+      domains: ['localhost'], // Add 'localhost' to the list of valid domains
+    },
   }

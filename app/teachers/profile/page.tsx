@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
+import Footer from '@/app/components/Footer';
 
 
 interface Region {
@@ -252,6 +253,7 @@ const getSubjectNameById = (subjectId: number | null) => {
                 <span className="loading loading-dots loading-lg"></span>
         </div>
       )}
+       <Footer />
     </div>
   );
 };

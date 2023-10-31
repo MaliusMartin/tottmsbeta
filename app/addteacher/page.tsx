@@ -5,6 +5,7 @@ import React, { useState, useCallback, useEffect} from 'react';
 
 import axios from "axios"
 import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 
 
@@ -370,6 +371,7 @@ const AddTeacherForm: React.FC = () => {
     </form>
     </div>
     </main>
+    <Footer/>
     </div> 
   );
 };
