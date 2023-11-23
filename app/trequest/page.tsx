@@ -191,7 +191,8 @@ const [request, setRequest] = useState<TransferApplication>({
     <div className='flex justify-center font-bold items-center"'>
       <h1 className='text-4xl mb-10'>Transfer Request</h1>
     </div>
-
+  <div className='flex justify-center pb-24'>
+  <div className='flex justify-center  bg-slate-200 items-center w-2/4 rounded-lg p-16'>
     <form onSubmit={handleSubmit}>
         <div className=' flex justify-center font-bold  items-center'>
           Provide current working location
@@ -328,8 +329,9 @@ const [request, setRequest] = useState<TransferApplication>({
 
         </div>
     </form>
+    </div>
+    </div>
     
-    <br/> <br/> <br/> <br/><br/><br/><br/>
   <Footer/>
 </div>
   );

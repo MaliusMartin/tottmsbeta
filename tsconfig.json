@@ -1,9 +1,6 @@
 
 
-{  
-  
-
-
+{ 
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "target": "es5",

@@ -25,6 +25,7 @@ const AddTeacherForm: React.FC = () => {
     school: string;
     education_level: string;
     subjects_taught: string;
+    
   }>({
     fname: '',
     mname: '',
@@ -39,6 +40,7 @@ const AddTeacherForm: React.FC = () => {
     school: '',
     education_level: '',
     subjects_taught: '',
+    
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -65,7 +67,7 @@ const AddTeacherForm: React.FC = () => {
         }
 
     // Submit the form data to the server.
-    const response = await axios.post('http://127.0.0.1:8000/tottmsapi/teachers/', data);
+    const response = await axios.post('http://127.0.0.1:8000/api/teachers/', data);
     if (response.status === 201) {
       // Success!
     } else {
@@ -73,14 +75,10 @@ const AddTeacherForm: React.FC = () => {
     }
   };
 
-//   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-//     event.preventDefault();
 
-//     // TODO: Submit the form data to your server
-//   };
  
   const addTeacher = async (teacher: typeof AddTeacherForm) => {
-    const response = await axios.post("http://127.0.0.1:8000/tottmsapi/teachers/", teacher);
+    const response = await axios.post("http://127.0.0.1:8000/api/teachers/", teacher);
     return response.data;
   };
   interface Region {
@@ -90,7 +88,7 @@ const AddTeacherForm: React.FC = () => {
   const [regions, setRegions] = useState<Region[]>([]);
 
     const fetchRegions = async () => {
-    const response = await axios.get("http://127.0.0.1:8000/tottmsapi/regions/");
+    const response = await axios.get("http://127.0.0.1:8000/api/regions/");
     const regionse = response.data;
     setRegions(regionse);
     };
@@ -111,7 +109,7 @@ const AddTeacherForm: React.FC = () => {
   
     const fetchDistrict = useCallback(async () => {
       const selectedRegionId = selectedRegion?.id;
-      const url = `http://127.0.0.1:8000/tottmsapi/regions/${selectedRegionId}/districts/`;
+      const url = `http://127.0.0.1:8000/api/regions/${selectedRegionId}/districts/`;
       const response = await axios.get(url);
       const districts = response.data;
       setDistrict(districts);
@@ -121,7 +119,36 @@ const AddTeacherForm: React.FC = () => {
         fetchDistrict()
     }, [selectedRegion, fetchDistrict]);
    
+    interface Gender{
+      id: number;
+      name: string;
+    }
 
+    const [gender, setGender] = useState<Gender[]>([]);
+
+    const fetchGender = async () => {
+      const response = await axios.get('http://127.0.0.1:8000/api/genders/');
+      const gender = response.data;
+      setGender(gender);
+    };
+    useEffect(() => {
+      fetchGender();
+    },[]);
+
+    interface Position{
+      id: number;
+      name: string;}
+      const [position, setPosition] = useState<Position[]>([]);
+
+      const fetchPosition = async () => {
+        const response = await axios.get('http://127.0.0.1:8000/api/positions/');
+        const position = response.data;
+        setPosition(position);
+      };
+
+      useEffect(() => {
+        fetchPosition();
+      },[]);
 
      interface Education{
         id: number;
@@ -131,7 +158,7 @@ const AddTeacherForm: React.FC = () => {
      const [education, setEducation] = useState<Education[]>([]);
 
      const fetchEducation = async () =>{
-        const response = await axios.get(`http://127.0.0.1:8000/tottmsapi/education-levels/`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/education-levels/`);
         const education = response.data;
         setEducation(education);
      };
@@ -148,7 +175,7 @@ const AddTeacherForm: React.FC = () => {
        const [subject, setSubject] = useState<Subjects[]>([]);
 
        const fetchSubject = async () =>{
-        const response = await axios.get(`http://127.0.0.1:8000/tottmsapi/subjects/`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/subjects/`);
         const subject = response.data;
         setSubject(subject);
        };
@@ -169,7 +196,7 @@ const AddTeacherForm: React.FC = () => {
         const selectedDistrictId = selectedDistrict?.id;
 
         if (selectedRegionId && selectedDistrictId) {
-          const url = `http://localhost:8000/tottmsapi/regions/${selectedRegionId}/districts/${selectedDistrictId}/schools/`;
+          const url = `http://localhost:8000/api/regions/${selectedRegionId}/districts/${selectedDistrictId}/schools/`;
           const response = await axios.get(url);
           const schools = response.data;
           setSchools(schools);
@@ -187,16 +214,17 @@ const AddTeacherForm: React.FC = () => {
   
    <div className='font-mono  text-black'>
     <Navbar  /> 
-                 <div className='flex justify-center font-bold items-center"'>
-                         <h1 className='text-4xl mb-10'>Add a new Teacher</h1>
-                    </div> 
-    <main className="flex min-h-screen flex-col items-center justify-between font-mono p-24" >
-         
-    <div className="flex flex-col gap-4">
+                
+    <main className="flex min-h-screen flex-col items-center justify-between font-mono p-32" >
+    
+    <div className="flex flex-col gap-4  bg-slate-200 rounded-lg">
+                    <div className='flex justify-center text-black font-bold items-center"'>
+                         <h2 >Add a new Teacher</h2>
+                    </div>
   
        
-    <form onSubmit={handleSubmit(onSubmit)}>
-      
+    <form onSubmit={handleSubmit(onSubmit)} className='p-10'>
+      <p>Employee names</p>
       <div className='flex flex-col lg:flex-row'>
             <div className='p-4'>
                   <input
@@ -233,36 +261,10 @@ const AddTeacherForm: React.FC = () => {
               />
           </div>
       </div>
-     
     <div className='flex flex-col lg:flex-row'>
-          <div className='p-4'>
-              <input
-                className="border border-gray-300 rounded-md p-2"
-                type="text"
-                placeholder="Position"
-                value={teacher.position}
-                name='position'
-                onChange={handleChange}
-                // {...register('position', { required: true })}
-              />
-          </div>
-     
-    
-          <div className='p-4'>
-              <label>Select gender </label>
-              <select name="gender"
-              value={teacher.gender} 
-              title="Gender"
-                onChange={handleChange}>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-              </select>
-        
-          </div>
-       
-          <div className='p-4'>
+    <div className='p-4'>
                 <input
-                  className="border border-gray-300 rounded-md p-2"
+                  className="border border-gray-300 rounded h-10 p-2"
                   type="text"
                   placeholder="Check number"
                   value={teacher.check_number}
@@ -271,24 +273,15 @@ const AddTeacherForm: React.FC = () => {
                   // {...register('check_number', { required: true })}
                 />
           </div>
+
+        
+      
     </div>
      
-     <div className='flex flex-col lg:flex-row'>
-            <div className='p-4'>
-                  <label>Starting date</label>
-                <input
-                  className="border border-gray-300 rounded-md p-2"
-                  type="date"
-                  placeholder="Start date"
-                  name='start_date'
-                  value={teacher.start_date}
-                  onChange={handleChange}
-                  // {...register('start_date', { required: true })}
-                />
-            </div>
-            
-            <div className='p-4'>
-                <label>Date of Birth</label>
+     <p>Birth information</p>
+    <div className='flex flex-col lg:flex-row'>
+        
+          <div className='p-4'>
                 <input
                   className="border border-gray-300 rounded-md p-2"
                   type="date"
@@ -299,12 +292,33 @@ const AddTeacherForm: React.FC = () => {
                   // {...register('date_of_birth', { required: true })}
                 />
             </div>
-     </div>
+                        
+            <div className='p-4'>
+                    <select 
+                        className='rounded h-10'
+                        name="gender" 
+                        placeholder='Select reason'
+                        title="Gender">
+                        {gender.map((gender) => (
+                          <option key={gender.id} value={gender.name}>
+                              {gender.name}
+                          </option>
+                          ))}
+                        </select>
+            </div>
+       
+          
+    </div>
     
+    <p>Working Location information</p>
      <div className='flex flex-col lg:flex-row'>
               <div className='p-4'>
-                  <label>Select region</label>
-                  <select name="region" title="Region" value={teacher.region} onChange={handleChange}>
+                  {/* <label>Region</label> */}
+                  <select 
+                  className='rounded h-10'
+                  name="region" 
+                  title="Region" 
+                  value={teacher.region} onChange={handleChange}>
                           {regions.map((region) => (
                               <option key={region.id} value={region.name}>
                                     {region.name}
@@ -315,8 +329,11 @@ const AddTeacherForm: React.FC = () => {
 
         
               <div className='p-4'>
-                    <label>Select district</label>
-                              <select name="district" title="District">
+                    {/* <label>District</label> */}
+                              <select 
+                              className='rounded h-10'
+                              name="district" 
+                              title="District">
                           {districts.map((district) => (
                           <option key={district.id} value={district.name}>
                               {district.name}
@@ -326,8 +343,10 @@ const AddTeacherForm: React.FC = () => {
               
               </div>
             <div className='p-4'>
-                <label>Select School</label>
-                  <select title='Schools' name='school' value={teacher.school} onChange={handleChange}>
+                {/* <label>School</label> */}
+                  <select className='rounded h-10' title='Schools' 
+                  name='school' 
+                  value={teacher.school} onChange={handleChange}>
                     {schools.map((school) => (
                                   <option key={school.id} value={school.name}>
                                       {school.name}
@@ -336,11 +355,27 @@ const AddTeacherForm: React.FC = () => {
                   </select>
             </div>
       </div>
-
+      <p>Education information</p>
       <div className='flex flex-col lg:flex-row'>
+
+      <div className='p-4'>
+          <select 
+                        className='rounded h-10'
+                        name="position" 
+                        placeholder='Select reason'
+                        title="Position">
+                        {position.map((position) => (
+                          <option key={position.id} value={position.name}>
+                              {position.name}
+                          </option>
+                          ))}
+                        </select>
+          </div>
               <div className='p-4'>
-                  <label>Education level</label>
-                  <select name="education_level" title="Education" value={teacher.education_level} onChange={handleChange}>
+                  {/* <label>Education</label> */}
+                  <select className='rounded h-10' name="education_level" 
+                  title="Education" 
+                  value={teacher.education_level} onChange={handleChange}>
                       {education.map((education) => (
                           <option key={education.id} value={education.name}>
                               {education.name}
@@ -350,8 +385,10 @@ const AddTeacherForm: React.FC = () => {
               </div>
 
               <div className='p-4'>
-                <label>Select subjects</label>
-                  <select name='subjects_taught' title='Subject' value={teacher.subjects_taught} onChange={handleChange}>
+                {/* <label>subjects</label> */}
+                  <select className='rounded h-10' name='subjects_taught' 
+                  title='Subject' 
+                  value={teacher.subjects_taught} onChange={handleChange}>
                       {subject.map((subject) => (
                           <option key={subject.id} value={subject.name}>
                               {subject.name}

@@ -9,13 +9,15 @@ const Login = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/tottmsapi/auth/login/', {
+            const response = await fetch('http://127.0.0.1:8000/api/auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ check_number: checkNumber, password }),
+                body: JSON.stringify({ username: checkNumber, password }),
             });
+            
+            console.log(response);
 
             if (response.status === 200) {
               
@@ -31,16 +33,21 @@ const Login = () => {
     };
 
     return (
-        <div className="flex flex-col items-center text-black justify-center h-screen font-mono">
-            <div className="flex justify-center font-bold items-center">
+    <main className='flex flex-col items-center p-14 '>
+    <div className="artboard artboard-horizontal phone-3">
+    <div className="flex flex-col items-center text-black justify-center hero min-h-screen bg-base-200 font-mono">
+       
+    <div className="hero-content flex-col lg:flex-row">
+    <div className="text-center lg:text-left">
                 <h1 className="text-4xl mb-10">LOGIN PAGE</h1>
-            </div>
+                <h3 className="font-bold mb-10">
+                    TAMISEMI ONLINE TEACHER TRANSFER MANAGEMENT SYSTEM
+                </h3>
+    </div>
 
-            <h3 className="font-bold mb-10">
-                TAMISEMI ONLINE TEACHER TRANSFER MANAGEMENT SYSTEM
-            </h3>
-
-            <form>
+           
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <form className="card-body">
                 <div className="flex justify-center font-bold items-center">
                     <input
                         className="input input-bordered input-primary w-full max-w-xs"
@@ -91,6 +98,10 @@ const Login = () => {
                 </div>
             </form>
         </div>
+    </div>
+</div>
+</div>
+</main>
     );
 };
 

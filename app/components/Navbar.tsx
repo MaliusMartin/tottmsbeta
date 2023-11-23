@@ -28,6 +28,18 @@ export default function Navbar() {
   </div>
   <div className="flex-none">
     <ul className="menu menu-horizontal px-1">
+    <li>
+        <details>
+          <summary>
+            Transfer
+          </summary>
+          <ul className="p-2 bg-base-100">
+            <li><a href="#">All Applications</a></li>
+            <li><a href="#">My Application</a></li>
+            <li><a href="#">Start Application</a></li>
+          </ul>
+        </details>
+      </li>
       <li><details>
           <summary> 
             Resources
